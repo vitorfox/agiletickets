@@ -4,7 +4,7 @@
 	</head>
 	<body>
 		<h2>Criar novas sessões</h2>
-		<form action="/espetaculo/${espetaculo.id}/sessoes" method="post">
+		<form action="/espetaculo/${espetaculoId}/sessoes" method="post">
 			<label for="inicio">Início</label>
 			<input type="text" name="inicio" id="inicio"/>
 						
@@ -19,6 +19,7 @@
 				<option value="DIARIA">Diária</option>		
 				<option value="SEMANAL">Semanal</option>			
 			</select>
+			<input type="submit" name="submit" />
 		</form>
 	
 	</body>

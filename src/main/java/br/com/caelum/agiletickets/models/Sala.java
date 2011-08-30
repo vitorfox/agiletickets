@@ -7,7 +7,4 @@ import javax.persistence.Id;
 @Entity
 public class Sala {
 
-	@Id
-	@GeneratedValue
-	private Long id;
 }

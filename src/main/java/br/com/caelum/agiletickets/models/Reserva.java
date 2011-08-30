@@ -8,12 +8,4 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Reserva {
 
-	@Id
-	@GeneratedValue
-	private Long id;
-
-	private String cadeira;
-
-	@ManyToOne
-	private Espetaculo espetaculo;
 }

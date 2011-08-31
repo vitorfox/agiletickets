@@ -1,6 +1,5 @@
 package br.com.caelum.agiletickets.models;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.*;

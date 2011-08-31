@@ -46,13 +46,7 @@ public class EspetaculosController {
 
 	@Post @Path("/espetaculos")
 	public void adiciona(Espetaculo espetaculo) {
-		if (Strings.isNullOrEmpty(espetaculo.getNome())) {
-			validator.add(new ValidationMessage("Nome do espetáculo não pode estar em branco", ""));
-		}
-		if (Strings.isNullOrEmpty(espetaculo.getDescricao())) {
-			validator.add(new ValidationMessage("Descrição do espetáculo não pode estar em branco", ""));
-		}
-		validator.onErrorRedirectTo(this).lista();
+		validaInformacoesDoEspetaculo(espetaculo);
 
 		agenda.cadastra(espetaculo);
 		result.redirectTo(this).lista();
@@ -120,4 +114,16 @@ public class EspetaculosController {
 		return espetaculo;
 	}
 
+	
+	// acho: este metodo verifica se o nome ou a descricao do espetaculo estah vazio. se sim imprime erro para o usuario senao imprime
+	// a lista de espetaculos para o usuario.
+	private void validaInformacoesDoEspetaculo(Espetaculo espetaculo) {
+		if (Strings.isNullOrEmpty(espetaculo.getNome())) {
+			validator.add(new ValidationMessage("Nome do espetáculo não pode estar em branco", ""));
+		}
+		if (Strings.isNullOrEmpty(espetaculo.getDescricao())) {
+			validator.add(new ValidationMessage("Descrição do espetáculo não pode estar em branco", ""));
+		}
+		validator.onErrorRedirectTo(this).lista();
+	}
 }

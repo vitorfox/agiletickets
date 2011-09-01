@@ -84,12 +84,29 @@ public class Espetaculo {
 	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) {
 		List<Sessao> sessoes = new ArrayList<Sessao>();
 		
-		if(Days.daysBetween(inicio, fim).getDays() > 1) {
-			Sessao sessao = new Sessao();
-			sessoes.add(sessao);
+		int quantidadeSessoesParaCriar = 0;
+		
+		System.out.println(periodicidade);
+		if (periodicidade == Periodicidade.SEMANAL) {
+			System.out.println("ḧallo.");
+			if (Days.daysBetween(inicio, fim).getDays() > 7){
+				quantidadeSessoesParaCriar = Days.daysBetween(inicio, fim).getDays() / 7;
+			}
+		} else {
+			if(Days.daysBetween(inicio, fim).getDays() >= 1) {
+				quantidadeSessoesParaCriar = Days.daysBetween(inicio, fim).getDays();
+			}
 		}
-		return sessoes;
+		
+		for (int i = 0; i < quantidadeSessoesParaCriar; i++) {
+			Sessao sessao = new Sessao();
+			sessao.setDuracaoEmMinutos(60);
 
+			sessoes.add(sessao);			
+		}
+		
+		
+		return sessoes;
 	}
 
 }

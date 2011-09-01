@@ -127,6 +127,39 @@ public class EspetaculosControllerTest {
 		assertThat(sessoes.size(), is(0));
 	}
 	
+	@Test
+	public void deveCriarSessaoSeDataFimForMaiorQueDataInicioCom1DiaDeDiferencaEntreElas() throws Exception {
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = new LocalDate().plusDays(1);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.DIARIA;
+		
+		Espetaculo espetaculo = new Espetaculo();
+		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);		
+		assertThat(sessoes.size(), is(1));
+	}
 	
-	
+	@Test
+	public void naoDeveCriarSessaoSemanalSeDiferencaEntreDataInicioEDataFimForMenorQue7Dias() throws Exception {
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = new LocalDate().plusDays(4);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		
+		Espetaculo espetaculo = new Espetaculo();
+		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);		
+		assertThat(sessoes.size(), is(0));
+	}
+
+	@Test
+	public void deveCriarDuasSessoesSemanaisNumIntervaloDeCatorzeDias() throws Exception {
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = new LocalDate().plusDays(14);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		
+		Espetaculo espetaculo = new Espetaculo();
+		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);		
+		assertThat(sessoes.size(), is(2));
+	}
 }

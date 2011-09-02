@@ -85,6 +85,8 @@
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
 		</war>
+		<move file="${build.dir}/META-INF/${persistence}"
+			tofile="${build.dir}/META-INF/persistence.xml" />
 	</target>
 
 	<!-- ================================= 

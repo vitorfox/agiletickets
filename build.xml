@@ -20,7 +20,8 @@
          ================================= -->
 	<target name="resolve" description="--> retrieve dependencies with ivy">
 		<path id="ivy.lib.path">
-			<pathelement location="${ivy.jar.file}" />
+			<pathelement location="${ivy.jar.file}" />		<move file="${build.dir}/META-INF/${persistence}"
+			tofile="${build.dir}/META-INF/persistence.xml" />
 		</path>
 		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path" />
 
@@ -82,8 +83,6 @@
           target: war
          ================================= -->
 	<target name="war" description="--> generate war file" depends="test">
-		<move file="${build.dir}/META-INF/${persistence}"
-			tofile="${build.dir}/META-INF/persistence.xml" />
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
 		</war>

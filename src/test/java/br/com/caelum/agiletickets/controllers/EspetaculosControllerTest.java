@@ -148,7 +148,7 @@ public class EspetaculosControllerTest {
 		
 		Espetaculo espetaculo = new Espetaculo();
 		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);		
-		assertThat(sessoes.size(), is(1));
+		assertThat(sessoes.size(), is(0));
 	}
 
 	@Test

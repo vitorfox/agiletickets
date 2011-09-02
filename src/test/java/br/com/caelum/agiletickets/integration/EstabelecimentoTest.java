@@ -74,4 +74,10 @@ public class EstabelecimentoTest {
 
 		estabelecimentos.ultimaLinhaDeveTerEstacionamento(false);
 	}
+	
+	@Test
+	public void deveAdicionarEspetaculoComTodosOsParametros() throws Exception {
+		
+	}
+	
 }
